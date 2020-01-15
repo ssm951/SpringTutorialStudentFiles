@@ -17,7 +17,7 @@ public class Main {
         JdbcTemplate jdbcTemplate = (JdbcTemplate) context.getBean("jdbcTemplate");
 
         // Using the JdbcTemplate to query for a student in the database
-        Student student = jdbcTemplate.queryForObject("SELECT * FROM Student WHERE studentID=?", new Object[]{12345},
+        Student student = jdbcTemplate.queryForObject("SELECT * FROM Students WHERE studentID=?", new Object[]{12345},
                 new BeanPropertyRowMapper<>(Student.class));
         System.out.println("Using queryForObject method from JdbcTemplate to query studentID=12345: ");
         if (student != null) {
@@ -27,7 +27,7 @@ public class Main {
         // Using the JdbcTemplate to query for all students in the database
         System.out.println("\n" +
                 "Using the query method from JdbcTemplate to query all students: ");
-        List allStudents = jdbcTemplate.query("SELECT * FROM Student",
+        List allStudents = jdbcTemplate.query("SELECT * FROM Students",
                 new BeanPropertyRowMapper<>(Student.class));
         for (Object stud : allStudents) {
             System.out.println(stud.toString());
