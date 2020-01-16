@@ -77,7 +77,7 @@ public class ReportServiceTest {
         PrintStream originalOut = System.out;
         System.setOut(ps);
 
-        // TODO: Insert Mockito code here:
+        // TODO: Insert Mockito.when() code here:
 
         reportService.printReport();
 
