@@ -67,25 +67,6 @@ public class ClassDAOImpl implements ClassDAO {
     }
 
     @Override
-    public boolean deleteClass(Class aClass) {
-        if (aClass == null) {
-            return false;
-        }
-        jdbcTemplate.update("DELETE FROM aClass WHERE classID=?", aClass.getClassID());
-        return true;
-    }
-
-    @Override
-    public boolean updateClass(Class aClass) {
-        if (aClass == null) {
-            return false;
-        }
-        jdbcTemplate.update("UPDATE Students SET name = ?, address = ?, phone = ? where ClassID = ?",
-                aClass.getClassName(), aClass.getRoom(), aClass.getProfessor(), aClass.getClassID());
-        return true;
-    }
-
-    @Override
     public void restoreDB() {
         Resource resource = new FileSystemResource(new File("./table_script.sql"));
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);

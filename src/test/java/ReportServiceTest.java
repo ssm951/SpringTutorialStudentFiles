@@ -76,5 +76,6 @@ public class ReportServiceTest {
 
         reportService.printReport(ps);
         Assertions.assertEquals(correctOutput, savedOutput.toString());
+        System.out.println(savedOutput.toString());
     }
 }

@@ -9,14 +9,7 @@ import java.util.List;
  * testing purposes and for different databases this project may access.
  */
 public interface StudentDAO {
-
     Student getStudentById(int id);
 
     List<Student> getAllStudents();
-
-    boolean deleteStudent(Student student);
-
-    boolean updateStudent(Student student);
-
-    boolean insertStudent(Student student);
 }
