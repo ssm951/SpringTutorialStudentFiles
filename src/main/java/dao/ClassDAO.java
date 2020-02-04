@@ -20,9 +20,5 @@ public interface ClassDAO {
 
     boolean deleteAllClasses();
 
-    boolean deleteClass(Class aClass);
-
-    boolean updateClass(Class aClass);
-
     void restoreDB();
 }
