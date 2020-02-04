@@ -1,12 +1,17 @@
 package dao;
 
 import model.Class;
-import service.response.StudentGrade;
-import service.response.StudentNewClass;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import service.response.StudentGrade;
+import service.response.StudentNewClass;
 
+import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 public class ClassDAOImpl implements ClassDAO {
     JdbcTemplate jdbcTemplate;
@@ -78,5 +83,12 @@ public class ClassDAOImpl implements ClassDAO {
         jdbcTemplate.update("UPDATE Students SET name = ?, address = ?, phone = ? where ClassID = ?",
                 aClass.getClassName(), aClass.getRoom(), aClass.getProfessor(), aClass.getClassID());
         return true;
+    }
+
+    @Override
+    public void restoreDB() {
+        Resource resource = new FileSystemResource(new File("./table_script.sql"));
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);
+        databasePopulator.execute(Objects.requireNonNull(jdbcTemplate.getDataSource()));
     }
 }

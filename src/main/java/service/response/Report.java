@@ -4,7 +4,8 @@ import model.Student;
 
 import java.util.Objects;
 
-public class Report extends Student {
+public abstract class Report {
+    Student student;
     String className;
     String grade;
 
@@ -12,7 +13,7 @@ public class Report extends Student {
     }
 
     public Report(int studentID, String name, String address, String phone, String className, String grade) {
-        super(studentID, name, address, phone);
+        this.student = new Student(studentID, name, address, phone);
         this.className = className;
         this.grade = grade;
     }
@@ -33,24 +34,30 @@ public class Report extends Student {
         this.grade = grade;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public int getStudentID() {
+        return student.getStudentID();
+    }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder(super.toString());
-        sb.append("Report{");
-        sb.append("className='").append(className).append('\'');
-        sb.append(", grade='").append(grade).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = student.toString() + "Report{" +
+                "className='" + className + '\'' +
+                ", grade='" + grade + '\'' +
+                '}';
+        return sb;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Report)) return false;
-        if (!super.equals(o)) return false;
         Report report = (Report) o;
         return className.equals(report.className) &&
-                grade.equals(report.grade);
+                grade.equals(report.grade) && student.equals(report.student);
     }
 
     @Override

@@ -13,8 +13,7 @@ import java.util.List;
 
 //TODO: Add appropriate annotations to wire up this test using the context.xml file
 public class ReportServiceTest {
-    String correctOutput = "ScheduleReportService invoked. " + System.getProperty("line.separator") +
-            "Printing new schedule: " + System.getProperty("line.separator") +
+    String correctOutput = "Printing new schedule: " + System.getProperty("line.separator") +
             "Student{studentID=12345, name='C. Brown', address='12 Apple St.', phone='555-1234'}" +
             "Report{className='EE200', grade='C'}PrerequisiteFor{EE300};" + System.getProperty("line.separator") +
             "     Class{classID=10001, className='EE300', room='Room 0', professor='Dr. Junior'}" +
@@ -70,23 +69,12 @@ public class ReportServiceTest {
 
     @Test
     public void scheduleReportServicePrint() throws Exception {
-        // Because of the unfortunate decision (for simplicity) to use System.out, the following code is used to
-        // redirect output to ByteArrayOutputStream to be able to compare output. Warning: Not thread safe
         ByteArrayOutputStream savedOutput = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(savedOutput);
-        PrintStream originalOut = System.out;
-        System.setOut(ps);
 
         // TODO: Insert Mockito.when() code here:
 
-        reportService.printReport();
-
-        // Switch back System.out to print out output on console again.
-        System.out.flush();
-        System.setOut(originalOut);
-        System.out.print(savedOutput.toString());
-
-        // Use assertEquals to ensure output is the same
+        reportService.printReport(ps);
         Assertions.assertEquals(correctOutput, savedOutput.toString());
     }
 }

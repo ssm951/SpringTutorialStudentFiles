@@ -24,4 +24,5 @@ public interface ClassDAO {
 
     boolean updateClass(Class aClass);
 
+    void restoreDB();
 }

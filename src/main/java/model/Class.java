@@ -53,13 +53,12 @@ public class Class {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Class{");
-        sb.append("classID=").append(classID);
-        sb.append(", className='").append(className).append('\'');
-        sb.append(", room='").append(room).append('\'');
-        sb.append(", professor='").append(professor).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "Class{" + "classID=" + classID +
+                ", className='" + className + '\'' +
+                ", room='" + room + '\'' +
+                ", professor='" + professor + '\'' +
+                '}';
+        return sb;
     }
 
     @Override

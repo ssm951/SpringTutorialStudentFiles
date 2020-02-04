@@ -53,13 +53,12 @@ public class Student {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Student{");
-        sb.append("studentID=").append(studentID);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", phone='").append(phone).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "Student{" + "studentID=" + studentID +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+        return sb;
     }
 
     @Override
