@@ -24,7 +24,7 @@ public class ScheduleReportService implements ReportService {
      * The printReport() method checks what prerequisites were fulfilled by the classes students have taken in the
      * current semester. It then deletes the classes of the previous semester in the server, insert the classes of the
      * new semester, then outputs the classes each student should take in the new semester.
-     * @param stream
+     * @param stream The type of stream being passed in.
      */
     @Override
     public void printReport(PrintStream stream) {
@@ -44,6 +44,8 @@ public class ScheduleReportService implements ReportService {
 
         for (int i = 0; i < newClasses.size(); i++) {
             stream.println(newClasses.get(i).toString());
+            stream.println("     Taken Prerequisite: " + newClasses.get(i).getPrerequisiteFor());
+            stream.println("     Next semester's classes:");
             printNewClass(newClasses.get(i));
             for (int j = i + 1; j < newClasses.size(); j++) {
                 if (newClasses.get(j).getStudentID() == newClasses.get(i).getStudentID()) {
@@ -63,7 +65,7 @@ public class ScheduleReportService implements ReportService {
         }
         List<Class> query = classDAO.queryClassesByName(studentNewClass.getPrerequisiteFor());
         if (query.size() == 1) {
-            stream.println("     " + query.get(0).toString());
+            stream.println("          " + query.get(0).toString());
         }
     }
 
