@@ -14,17 +14,17 @@ import java.util.List;
 //TODO: Add appropriate annotations to wire up this test using the context.xml file
 public class ReportServiceTest {
     String correctOutput = "Printing new schedule: " + System.getProperty("line.separator") +
-            "Report{studentID=12345, name='C. Brown', address='12 Apple St.', phone='555-1234'}" +
+            "Report {studentID=12345, name='C. Brown', address='12 Apple St.', phone='555-1234'}" +
             System.getProperty("line.separator") +
             "     Taken Prerequisite: EE300" + System.getProperty("line.separator") +
             "     Next semester's classes:" + System.getProperty("line.separator") +
             "          Class{classID=10001, className='EE300', room='Room 0', professor='Dr. Junior'}" +
             System.getProperty("line.separator") +
-            "Report{studentID=67890, name='L. Van Pelt', address='34 Pear Ave.', phone='555-5678'}" +
+            "Report {studentID=67890, name='L. Van Pelt', address='34 Pear Ave.', phone='555-5678'}" +
             System.getProperty("line.separator") +
             "     Taken Prerequisite: PH201" + System.getProperty("line.separator") +
             "     Next semester's classes:" + System.getProperty("line.separator") +
-            "     Class{classID=10000, className='PH201', room='Room 1', professor='Dr. Evil'}"
+            "          Class{classID=10000, className='PH201', room='Room 1', professor='Dr. Evil'}"
             + System.getProperty("line.separator");
 
     ClassDAO classDAOMock;
