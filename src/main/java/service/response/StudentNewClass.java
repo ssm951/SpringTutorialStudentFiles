@@ -25,11 +25,7 @@ public class StudentNewClass extends Report {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder(super.toString());
-        sb.append("PrerequisiteFor{");
-        sb.append(prerequisiteFor);
-        sb.append('}').append(";");
-        return sb.toString();
+        return super.toString();
     }
 
     @Override
