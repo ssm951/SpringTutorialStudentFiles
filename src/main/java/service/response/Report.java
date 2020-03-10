@@ -74,13 +74,11 @@ public abstract class Report {
 
     @Override
     public String toString() {
-        return "Report{" +
+        return "Report {" +
                 "studentID=" + studentID +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", className='" + className + '\'' +
-                ", grade='" + grade + '\'' +
                 '}';
     }
 
