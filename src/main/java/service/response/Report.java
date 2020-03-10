@@ -5,7 +5,10 @@ import model.Student;
 import java.util.Objects;
 
 public abstract class Report {
-    Student student;
+    int studentID;
+    String name;
+    String address;
+    String phone;
     String className;
     String grade;
 
@@ -13,7 +16,10 @@ public abstract class Report {
     }
 
     public Report(int studentID, String name, String address, String phone, String className, String grade) {
-        this.student = new Student(studentID, name, address, phone);
+        this.studentID = studentID;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
         this.className = className;
         this.grade = grade;
     }
@@ -34,34 +40,65 @@ public abstract class Report {
         this.grade = grade;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudentID() {
+        return studentID;
     }
 
-    public int getStudentID() {
-        return student.getStudentID();
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
-        String sb = student.toString() + "Report{" +
-                "className='" + className + '\'' +
+        return "Report{" +
+                "studentID=" + studentID +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", className='" + className + '\'' +
                 ", grade='" + grade + '\'' +
                 '}';
-        return sb;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Report)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Report report = (Report) o;
-        return className.equals(report.className) &&
-                grade.equals(report.grade) && student.equals(report.student);
+        return studentID == report.studentID &&
+                name.equals(report.name) &&
+                Objects.equals(address, report.address) &&
+                Objects.equals(phone, report.phone) &&
+                Objects.equals(className, report.className) &&
+                Objects.equals(grade, report.grade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), className, grade);
+        return Objects.hash(studentID, name, address, phone, className, grade);
     }
 }
